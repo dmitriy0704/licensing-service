@@ -13,7 +13,7 @@
     <artifactId>licensing-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>licensing-service</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Ostock Licensing Service</description>
     <properties>
         <java.version>17</java.version>
     </properties>
