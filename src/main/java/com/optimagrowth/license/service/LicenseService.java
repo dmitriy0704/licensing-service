@@ -21,18 +21,6 @@ public class LicenseService {
         return license;
     }
 
-    //POST
-    public String createLicense(License license, String organizationId) {
-        String responseMessage = null;
-        if (license != null) {
-            license.setOrganizationId(organizationId);
-            responseMessage = String.format(
-                    "This is the post and the object is: %s",
-                    license.toString());
-        }
-        return responseMessage;
-    }
-
     //PUT
     public String updateLicense(License license, String organizationId) {
         String responseMessage = null;
@@ -40,6 +28,18 @@ public class LicenseService {
             license.setOrganizationId(organizationId);
             responseMessage = String.format(
                     "This is the put and the object is: %s",
+                    license.toString());
+        }
+        return responseMessage;
+    }
+
+    //POST
+    public String createLicense(License license, String organizationId) {
+        String responseMessage = null;
+        if (license != null) {
+            license.setOrganizationId(organizationId);
+            responseMessage = String.format(
+                    "This is the post and the object is: %s",
                     license.toString());
         }
         return responseMessage;

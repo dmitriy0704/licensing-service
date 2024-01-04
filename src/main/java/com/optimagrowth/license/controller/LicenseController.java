@@ -4,10 +4,7 @@ import com.optimagrowth.license.model.License;
 import com.optimagrowth.license.service.LicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "v1/organization/{organizationId}/license")
@@ -16,7 +13,7 @@ public class LicenseController {
     @Autowired
     private LicenseService licenseService;
 
-//    @GetMapping(value = "/{licenseId}")
+    //    @GetMapping(value = "/{licenseId}")
     @RequestMapping(value = "/{licenseId}", method = RequestMethod.GET)
     public ResponseEntity<License> getLicence(
             @PathVariable("organizationId") String organizationId,
@@ -26,6 +23,33 @@ public class LicenseController {
         return ResponseEntity.ok(license);
     }
 
+    @PutMapping
+    public ResponseEntity<String> updateLicense(
+            @PathVariable("organizationId") String organizationId,
+            @RequestBody License request
+    ) {
+        return ResponseEntity.ok(
+                licenseService.updateLicense(request, organizationId)
+        );
+    }
 
-    public ResponseEntity<>
+    @PostMapping
+    public ResponseEntity<String> createLicense(
+            @PathVariable("organizationId") String organizationId,
+            @RequestBody License request
+    ) {
+        return ResponseEntity.ok(
+                licenseService.createLicense(request, organizationId)
+        );
+    }
+
+    @DeleteMapping(value = "/{licenseId}")
+    public ResponseEntity<String> deleteLicense(
+            @PathVariable("organizationId") String organizationId,
+            @PathVariable("licenseId") String licenceId
+    ) {
+        return ResponseEntity.ok(
+                licenseService.deleteLicense(licenceId, organizationId)
+        );
+    }
 }
