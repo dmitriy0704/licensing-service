@@ -26,8 +26,8 @@ public class LicensingServiceApplication {
 
 	@Bean
 	public ResourceBundleMessageSource messageSource(){
-		ResourceBundleMessageSource messageSource =
-				new ResourceBundleMessageSource();
+		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setUseCodeAsDefaultMessage(true);
 		messageSource.setBasenames("message");
 		return messageSource;
 	}
